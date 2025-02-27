@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 #from pydantic import BaseModel
 import mysql.connector
+from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
 
 # Database connection
 def get_db_connection():
@@ -12,6 +14,14 @@ def get_db_connection():
     )
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Pydantic Model
 # class Item(BaseModel):
@@ -81,7 +91,8 @@ def verify(user_input: str, question_ID: int):
         return {"message" : "wrong answer",
                 "correct answer": ans}
 
-
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8000)
 
 
 
