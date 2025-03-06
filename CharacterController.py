@@ -1,4 +1,6 @@
 import random
+import json
+import os
 
 from Character import Character
 
@@ -68,17 +70,62 @@ class CharacterController:
         random_characters = random.sample(self.character_list, character_amount)
         return random_characters
 
-    def fetch_characters_from_database(self, database):
+    def fetch_characters_from_file(self, file_path):
         """
-        Get all characters from the database and put them in the character list.
+        Get all characters from the file and put them in the character list.
 
         Args:
-            database (any): The database to fetch characters from.
+            file_path: The file to fetch characters from.
 
         Returns:
             nothing
         """
-        pass
+                # Clear existing characters
+        self.character_list.clear()
+        
+        try:
+            # Check if file exists
+            if not os.path.exists(file_path):
+                print(f"File not found: {file_path}")
+                return False
+            
+            # Read JSON file
+            with open(file_path, 'r', encoding='utf-8') as file:
+                characters_data = json.load(file)
+            
+            # Process each character
+            for char_data in characters_data:
+                # Ensure all required fields are present
+                required_fields = ['path_to_file', 'clothes']
+                if not all(field in char_data for field in required_fields):
+                    print(f"Skipping invalid character data: {char_data}")
+                    continue
+                
+                # Increment ID
+                self.id += 1
+                
+                # Create character
+                character = Character(
+                    character_id=self.id,
+                    path_to_file=char_data['path_to_file'],
+                    clothes=char_data['clothes']
+                )
+                
+                # Optional fields
+                character.word_position = char_data.get('word_position')
+                character.center_position = char_data.get('center_position')
+                
+                # Add to character list
+                self.character_list.append(character)
+            
+            return True
+        
+        except json.JSONDecodeError:
+            print(f"Error: Invalid JSON format in file {file_path}")
+            return False
+        except Exception as e:
+            print(f"Unexpected error when reading characters from file: {e}")
+            return False
 
     def remove_character(self, character_id):
         """
