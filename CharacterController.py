@@ -1,3 +1,8 @@
+import random
+
+from Character import Character
+
+
 class CharacterController:
     """
     A controller to manage characters, including creation, retrieval, updating, and deletion.
@@ -29,8 +34,10 @@ class CharacterController:
         Returns:
             Character: A character object.
         """
-
-        pass
+        self.id += 1  # Increment the ID counter
+        new_character = Character(CharacterController.id, clothes, name_of_file)
+        CharacterController.character_list.append(new_character)
+        return new_character
 
     def verify_user_input(self, character_id, user_input):
         """
@@ -58,7 +65,8 @@ class CharacterController:
         Returns:
             list: A list of characters.
         """
-        pass
+        random_characters = random.sample(self.character_list, character_amount)
+        return random_characters
 
     def fetch_characters_from_database(self, database):
         """
@@ -82,7 +90,11 @@ class CharacterController:
         Returns:
             bool: True if the character was removed, False if not found.
         """
-        pass
+        for character in self.character_list:
+            if character.id == character_id:
+                CharacterController.character_list.remove(character)
+                return True
+        return False
 
     def update_character(self, character_id, attribute_to_change, new_value, clothe_position=0):
         """
