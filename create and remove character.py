@@ -1,3 +1,4 @@
+import random
 class Character:
     def __init__(self, character_id, name_of_file, clothes):
         self.id = character_id
@@ -39,3 +40,16 @@ class CharacterController:
                 CharacterController.character_list.remove(character)
                 return True
         return False
+
+    def ask_character(self, character_amount):
+        """
+        Return character_amount random characters taken from the character_list.
+    
+        Args:
+            character_amount (int): Number of characters needed.
+    
+        Returns:
+            list: A list of characters.
+        """
+        random_characters = random.sample(CharacterController.character_list, character_amount)
+        return random_characters
