@@ -93,33 +93,42 @@ class CharacterController:
             with open(file_path, 'r', encoding='utf-8') as file:
                 characters_data = json.load(file)
             
-            # Process each character
             for char_data in characters_data:
                 # Ensure all required fields are present
-                required_fields = ['path_to_file', 'clothes']
+                required_fields = ['id', 'clothes', 'path_to_file']
                 if not all(field in char_data for field in required_fields):
                     print(f"Skipping invalid character data: {char_data}")
                     continue
-                
-                # Increment ID
-                self.id += 1
-                
-                # Create character
+
+                # Process each clothing item
+                clothes = []
+                for clothe_dict in char_data['clothes']:
+                    # Extract clothing attributes with default values
+                    type_ = clothe_dict.get('type', '')
+                    color = clothe_dict.get('color', '')
+                    texture = clothe_dict.get('texture', '')
+                    # Extract center_position as tuple (x, y)
+                    center_pos = clothe_dict.get('center_position', {})
+                    center_tuple = (center_pos.get('x', 0), center_pos.get('y', 0))
+                    # Extract word_position as tuple (x, y)
+                    word_pos = clothe_dict.get('word_position', {})
+                    word_tuple = (word_pos.get('x', 0), word_pos.get('y', 0))
+                    # Create the clothing list entry
+                    clothe_entry = [type_, color, texture, center_tuple, word_tuple]
+                    clothes.append(clothe_entry)
+
+                # Create character instance with processed clothes
                 character = Character(
-                    character_id=self.id,
-                    path_to_file=char_data['path_to_file'],
-                    clothes=char_data['clothes']
+                    id=char_data['id'],
+                    clothes=clothes,
+                    path_to_file=char_data['path_to_file']
                 )
-                
-                # Optional fields
-                character.word_position = char_data.get('word_position')
-                character.center_position = char_data.get('center_position')
-                
+
                 # Add to character list
                 self.character_list.append(character)
-            
+
             return True
-        
+
         except json.JSONDecodeError:
             print(f"Error: Invalid JSON format in file {file_path}")
             return False
