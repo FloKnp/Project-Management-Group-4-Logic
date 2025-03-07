@@ -3,22 +3,17 @@ import se01_data_model
 
 
 class TestDataModel(unittest.TestCase):
-    def test_set_score(self):
-        scoring = scoringPaperPelle.Scoring()
-        scoring.set_score(10)
-        self.assertEqual(scoring.player_score, 10)
+    def test_give_nouns(self):
+        list1 = ['kläder', 'Kvinna']
+        given = give_noons(list)
+        intersection = list(set(list1) & set(given))
+        self.assertFalse(intersection, "Intersection of list1 and given shoud be empty")
 
-    def test_add_score(self):
-        scoring = scoringPaperPelle.Scoring()
-        scoring.add_score(1)
-        self.assertEqual(scoring.player_score, 1)
-
-    def test_reset_score(self):
-        scoring = scoringPaperPelle.Scoring()
-        scoring.set_score(10)
-        scoring.reset_score()
-        self.assertEqual(scoring.player_score, 0)
-
+    def test_give_adjectives(self):
+        list1 = ['gul']
+        given = give_adjectives(list)
+        intersection = list(set(list1) & set(given))
+        self.assertFalse(intersection, "Intersection of list1 and given shoud be empty")
 
 if __name__ == '__main__':
     unittest.main()
