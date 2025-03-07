@@ -50,3 +50,5 @@ Manages characters, including creation, retrieval, updating, and deletion.
 ## Character.py
 
 Represents a character with an ID, associated clothes, and a file path.
+
+## 
