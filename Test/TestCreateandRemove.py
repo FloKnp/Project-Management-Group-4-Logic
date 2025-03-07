@@ -1,6 +1,7 @@
 import unittest
 from CharacterController import CharacterController  # Replace with the actual module name
 
+
 class TestCharacterController(unittest.TestCase):
     def setUp(self):
         """Set up a fresh CharacterController before each test."""

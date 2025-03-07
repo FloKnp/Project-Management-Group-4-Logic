@@ -14,8 +14,8 @@ class CharacterController:
         id (int): A static ID counter for unique character identification.
     """
 
-    def __init__(self):
-        self.character_list = []
+    def __init__(self, character_list=[]):
+        self.character_list = character_list
         self.id = 0  # Static variable
 
     def create_character(self, name_of_file, clothes):

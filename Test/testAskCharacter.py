@@ -1,10 +1,13 @@
 import unittest
 import random
 
+from CharacterController import CharacterController
+
+
 class TestAskCharacter(unittest.TestCase):
     def setUp(self):
         self.character_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-        self.generator = CharacterGenerator(self.character_list)
+        self.generator = CharacterController(self.character_list)
 
     def test_ask_character_length(self):
         result = self.generator.ask_character(3)
