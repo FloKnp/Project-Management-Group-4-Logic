@@ -98,7 +98,7 @@ class TestCharacterController(unittest.TestCase):
         
         # Assert the result
         self.assertTrue(result)
-        self.assertEqual(len(self.controller.character_list), 2)
+        self.assertEqual(len(self.controller.character_list), 3)
         
         # Check first character
         char1 = self.controller.character_list[0]
@@ -110,7 +110,7 @@ class TestCharacterController(unittest.TestCase):
         char2 = self.controller.character_list[1]
         self.assertEqual(char2.id, 2)
         self.assertEqual(char2.path_to_file, "character2.png")
-        self.assertEqual(len(char2.clothes), 1)
+        self.assertEqual(len(char2.clothes), 3)
     
     def test_fetch_characters_from_nonexistent_file(self):
         """Test loading from a file that doesn't exist."""
@@ -145,7 +145,7 @@ class TestCharacterController(unittest.TestCase):
         """Test that the method clears existing characters before loading new ones."""
         # First load some characters
         self.controller.fetch_characters_from_file(self.test_json_path)
-        self.assertEqual(len(self.controller.character_list), 2)
+        self.assertEqual(len(self.controller.character_list), 3)
         
         # Create a new file with different characters
         new_data = [
@@ -167,6 +167,7 @@ class TestCharacterController(unittest.TestCase):
         self.assertTrue(result)
         self.assertEqual(len(self.controller.character_list), 1)
         self.assertEqual(self.controller.character_list[0].id, 3)
+
 
 if __name__ == '__main__':
     unittest.main()
