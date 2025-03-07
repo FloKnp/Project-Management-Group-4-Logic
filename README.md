@@ -17,3 +17,11 @@ It will run 2 routines to test that the datamodel can provide a list of nouns or
 -Provides functions for randomly selecting nouns and adjectives that are not already used.
 
 -Includes a function to verify the correctness of tasks, exercises, and lessons.
+
+## Clothe.py
+
+Represents a piece of clothing with various attributes, including type, color, texture,
+and positioning information.
+
+## Position.py
+
