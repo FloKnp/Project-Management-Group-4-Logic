@@ -27,7 +27,7 @@ and positioning information.
 
 Represents a 2D point with x and y coordinates.
 
-## CharacterController Class
+## CharacterController.py
 
 Manages characters, including creation, retrieval, updating, and deletion.
 
@@ -47,3 +47,6 @@ Manages characters, including creation, retrieval, updating, and deletion.
 
 -retrieve_adjectives(character_id_list): Retrieves 20 adjectives, excluding those in the given character ID list (not implemented).
 
+## Character.py
+
+Represents a character with an ID, associated clothes, and a file path.
