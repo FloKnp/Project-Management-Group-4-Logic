@@ -46,6 +46,10 @@ class CharacterController:
         for i in range(len(self.character_list)):
             if self.character_list[i].id == id:
                 return self.character_list[i]
+    def get_character_index(self, id):
+        for i in range(len(self.character_list)):
+            if self.character_list[i].id == id:
+                return i
 
     def verify_user_input(self, character_id, user_input):
         """
@@ -188,21 +192,20 @@ class CharacterController:
         Returns:
             bool: True if the update was successful, False otherwise.
         """
-        if character_id not in self.character_list: return False
-        elif attribute_to_change == 'path_to_file':
-            self.character_list[character_id].path_to_file = new_value
+        if attribute_to_change == 'path_to_file':
+            self.character_list[self.get_character_index(character_id)].path_to_file = new_value
             return True
         elif attribute_to_change == 'clothes':
             if not isinstance(new_value, list): return False
-            self.character_list[character_id].clothes[clothe_position] = new_value
+            self.character_list[self.get_character_index(character_id)].clothes[clothe_position] = new_value
             return True
         elif attribute_to_change == 'word_position':
             if not isinstance(new_value, tuple): return False
-            self.character_list[character_id].clothes[clothe_position].edit_word_center(new_value)
+            self.character_list[self.get_character_index(character_id)].clothes[clothe_position].word_position(new_value)
             return True
         elif attribute_to_change == 'center_position':
             if not isinstance(new_value, tuple): return False
-            self.character_list[character_id].clothes[clothe_position].edit_center_center(new_value)
+            self.character_list[self.get_character_index(character_id)].clothes[clothe_position].center_position(new_value)
             return True
         else: return False
 
