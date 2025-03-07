@@ -24,41 +24,63 @@ class TestCharacterController(unittest.TestCase):
         # Sample test data
         self.test_data = [
             {
-                "id": 1,
-                "clothes": [
-                    {
-                        "type": "shirt",
-                        "color": "blue",
-                        "texture": "smooth",
-                        "center_position": {"x": 100, "y": 150},
-                        "word_position": {"x": 110, "y": 160}
-                    },
-                    {
-                        "type": "pants",
-                        "color": "black",
-                        "texture": "denim",
-                        "center_position": {"x": 100, "y": 250},
-                        "word_position": {"x": 110, "y": 260}
-                    }
-                ],
-                "path_to_file": "character1.png",
-                "word_position": {"x": 105, "y": 200},
-                "center_position": {"x": 100, "y": 200}
+            "id": 1,
+            "clothes": [
+                {
+                "type": "skjorta",
+                "color": "blå",
+                "texture": "slät",
+                "center_position": {"x": 100, "y": 150},
+                "word_position": {"x": 110, "y": 160}
+                },
+                {
+                "type": "byxor",
+                "color": "svart",
+                "texture": "denim",
+                "center_position": {"x": 100, "y": 250},
+                "word_position": {"x": 110, "y": 260}
+                }
+            ],
+            "path_to_file": "character1.png",
+            "word_position": {"x": 105, "y": 200},
+            "center_position": {"x": 100, "y": 200}
             },
             {
-                "id": 2,
-                "clothes": [
-                    {
-                        "type": "hat",
-                        "color": "red",
-                        "texture": "wool",
-                        "center_position": {"x": 100, "y": 50},
-                        "word_position": {"x": 110, "y": 60}
-                    }
-                ],
-                "path_to_file": "character2.png"
+            "id": 2,
+            "clothes": [
+                {
+                "type": "hatt",
+                "color": "röd",
+                "texture": "ull",
+                "center_position": {"x": 100, "y": 50},
+                "word_position": {"x": 110, "y": 60}
+                },
+                {
+                "type": "skjorta",
+                "color": "grön",
+                "texture": "bomull",
+                "center_position": {"x": 100, "y": 150},
+                "word_position": {"x": 110, "y": 160}
+                },
+                {
+                "type": "byxor",
+                "color": "brun",
+                "texture": "läder",
+                "center_position": {"x": 100, "y": 250},
+                "word_position": {"x": 110, "y": 260}
+                }
+            ],
+            "path_to_file": "character2.png",
+            "word_position": {"x": 105, "y": 200},
+            "center_position": {"x": 100, "y": 200}
+            },
+            {
+            "id": 3,
+            "clothes": [],
+            "path_to_file": "character3.png"
             }
         ]
+
         
         # Write test data to the test file
         with open(self.test_json_path, 'w') as f:
