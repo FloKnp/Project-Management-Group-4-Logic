@@ -3,7 +3,7 @@ import json
 import os
 
 from Character import Character
-
+import se01_data_model
 
 class CharacterController:
     """
@@ -41,6 +41,11 @@ class CharacterController:
         new_character = Character(self.id, clothes, name_of_file)
         self.character_list.append(new_character)
         return new_character
+
+    def get_character(self, id):
+        for i in range(len(self.character_list)):
+            if self.character_list[i].id == id:
+                return self.character_list[i]
 
     def verify_user_input(self, character_id, user_input):
         """
@@ -212,18 +217,28 @@ class CharacterController:
         Returns:
             list: A list of 15 nouns.
         """
-        pass
+        nouns = []
+        for character_id in character_id_list:
+            character = self.get_character(character_id)
+            for clothes in character.clothes:
+                nouns.extend(clothes[0])
+        return se01_data_model.give_noons(nouns)
 
     def retrieve_adjectives(self, character_id_list):
         """
-        Retrieves 20 adjectives from the database,
+        Retrieves adjectives from the database,
         excluding the adjectives contained in the character_id_list given in parameter.
 
         Args:
             character_id_list (list): List of characters's ID.
 
         Returns:
-            list: A list of 20 adjectives.
+            list: A list of adjectives.
         """
+        adjectives = []
+        for character_id in character_id_list:
+            character = self.get_character(character_id)
+            for clothes in character.clothes:
+                adjectives.extend([clothes[1], clothes[2]])
+        return se01_data_model.give_adjectives(adjectives)
 
-        pass
