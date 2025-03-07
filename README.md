@@ -27,3 +27,23 @@ and positioning information.
 
 Represents a 2D point with x and y coordinates.
 
+## CharacterController Class
+
+Manages characters, including creation, retrieval, updating, and deletion.
+
+-create_character(name_of_file, clothes): Creates and adds a new character to the list.
+
+-verify_user_input(character_id, user_input): Verifies if the user's input is correct (not implemented).
+
+-ask_character(character_amount): Returns a list of random characters from the character list.
+
+-fetch_characters_from_file(file_path): Loads characters from a JSON file into the character list.
+
+-remove_character(character_id): Removes a character from the list by ID.
+
+-update_character(character_id, attribute_to_change, new_value, clothe_position=0): Updates a character’s attribute (e.g., clothes, position).
+
+-retrieve_nouns(character_id_list): Retrieves 15 nouns, excluding those in the given character ID list (not implemented).
+
+-retrieve_adjectives(character_id_list): Retrieves 20 adjectives, excluding those in the given character ID list (not implemented).
+
