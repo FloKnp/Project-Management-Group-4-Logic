@@ -51,4 +51,18 @@ Manages characters, including creation, retrieval, updating, and deletion.
 
 Represents a character with an ID, associated clothes, and a file path.
 
-## 
+## scoringPaperPelle.py
+
+Handles the scoring logic for the paper pelle game, including managing the player's score and highscore based on difficulty.
+
+__init__(difficulty="medium", previous_highscore=0):
+Initializes the Scoring object with default values for difficulty, player score (set to 0), and player highscore (set to the provided previous highscore).
+
+-add_score(amount=1):
+Increases the player's score by the specified amount (default is 1). Updates the highscore if the current score exceeds the previous highscore.
+
+-reset_score():
+Resets the player's score to 0.
+
+-set_score(new_score):
+Sets the player's score to a specified value (new_score). Updates the highscore if the new score exceeds the previous highscore.
