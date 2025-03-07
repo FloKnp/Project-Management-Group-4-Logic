@@ -68,8 +68,10 @@ class CharacterController:
         Returns:
             list: A list of characters.
         """
-        random_characters = random.sample(self.character_list, character_amount)
-        return random_characters
+        if character_amount< len(self.character_list):
+            return random.sample(self.character_list, character_amount)
+        else :
+            return self.character_list
 
     def fetch_characters_from_file(self, file_path):
         """
