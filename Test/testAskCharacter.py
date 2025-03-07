@@ -1,25 +1,6 @@
 import unittest
 import random
 
-class CharacterGenerator:
-    def __init__(self, character_list):
-        self.character_list = character_list
-
-    def ask_character(self, character_amount):
-        """
-        Return character_amount random characters taken from the character_list.
-
-        Args:
-            character_amount (int): Number of characters needed.
-
-        Returns:
-            list: A list of characters.
-        """
-        if character_amount< len(self.character_list):
-            return random.sample(self.character_list, character_amount)
-        else :
-            return self.character_list
-
 class TestAskCharacter(unittest.TestCase):
     def setUp(self):
         self.character_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
