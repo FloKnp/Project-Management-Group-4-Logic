@@ -14,8 +14,9 @@ class CharacterController:
         id (int): A static ID counter for unique character identification.
     """
 
-    character_list = []
-    id = 0  # Static variable
+    def __init__(self):
+        self.character_list = []
+        self.id = 0  # Static variable
 
     def create_character(self, name_of_file, clothes):
         """
@@ -37,8 +38,8 @@ class CharacterController:
             Character: A character object.
         """
         self.id += 1  # Increment the ID counter
-        new_character = Character(CharacterController.id, clothes, name_of_file)
-        CharacterController.character_list.append(new_character)
+        new_character = Character(self.id, clothes, name_of_file)
+        self.character_list.append(new_character)
         return new_character
 
     def verify_user_input(self, character_id, user_input):
@@ -148,7 +149,7 @@ class CharacterController:
         """
         for character in self.character_list:
             if character.id == character_id:
-                CharacterController.character_list.remove(character)
+                self.character_list.remove(character)
                 return True
         return False
 
